@@ -140,6 +140,7 @@ body {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   color: #e54;
+  cursor: pointer;
 }
 
 .faq-lista dt::before {
@@ -223,13 +224,28 @@ body {
   }
 }
 
-.js .js-tabcontent section {
+.js .js-tabcontent section,
+.js .js-accordion dd {
   display: none;
 }
 
 .js .js-tabcontent section.ativo {
   display: block !important;
   animation: show 0.5s forwards;
+}
+
+.js .js-accordion dd.ativo {
+  display: block !important;
+  animation: slideDown 0.5s forwards;
+}
+
+.js-accordion dt::after {
+  content: "🠋";
+  margin-left: 10px;
+}
+
+.js-accordion dt.ativo::after {
+  content: "🠉";
 }
 
 @keyframes show {
@@ -240,5 +256,16 @@ body {
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    max-height: 200px;
+    opacity: 1;
   }
 }
